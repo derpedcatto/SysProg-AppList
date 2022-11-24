@@ -1,0 +1,90 @@
+﻿<Window x:Class="SysProg_AppList._2_Tasks.TasksWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SysProg_AppList._2_Tasks"
+        mc:Ignorable="d"
+        Title="TasksWindow" Height="450" Width="800">
+
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--Thread Pool-->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="0">
+            <Label Content="Thread Pool"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Start1"
+                        Content="Start"
+                        Click="Start1_Click"
+                        />
+                <Button x:Name="Stop1"
+                        Content="Stop"
+                        Click="Stop1_Click"
+                        />
+            </StackPanel>
+            <TextBlock x:Name="Log1" 
+                       TextWrapping="Wrap"
+                       />
+        </StackPanel>
+
+        <!--Multitasking-->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="0"
+                    Grid.Column="1">
+            <Label Content="Multitasking"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="Start2"
+                        Content="Start"
+                        Click="Start2_Click"
+                        />
+                <Button x:Name="Stop2"
+                        Content="Stop"
+                        Click="Stop2_Click"
+                        />
+                <Button x:Name="Start3"
+                        Content="Start"
+                        Click="Start3_Click"
+                        />
+            </StackPanel>
+            <TextBlock x:Name="Log2" 
+                       TextWrapping="Wrap"
+                       />
+        </StackPanel>
+
+        <!--async/await-->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1"
+                    Grid.Column="0">
+            <Label Content="Async / Await"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="StartAsyncButton"
+                        Content="Start"
+                        Click="StartAsyncButton_Click"
+                        />
+            </StackPanel>
+            <TextBlock x:Name="LogAsync"
+                       FontFamily="Courier New"
+                       TextWrapping="Wrap"
+                       />
+        </StackPanel>
+    </Grid>
+</Window>

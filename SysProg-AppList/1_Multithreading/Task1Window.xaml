@@ -1,0 +1,59 @@
+﻿<Window x:Class="SysProg_AppList.Task1Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SysProg_AppList"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title=""
+        Width="auto"
+        Height="auto"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        mc:Ignorable="d"
+        >
+    <Grid Width="200"
+          Margin="25,25"
+          >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="InputTextBox"
+                 Grid.Row="0"
+                 />
+        <Button x:Name="SubmitButton"
+                Grid.Row="1"
+                Margin="0,5,0,15"
+                Click="SubmitButton_Click"
+                Content="Submit Number"
+                FontSize="18"
+                FontWeight="DemiBold"
+                />
+        <ListView x:Name="OutputListView"
+                  Grid.Row="2"
+                  Height="200"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="OutputListView_ColumnStep"
+                                    Width="50"
+                                    DisplayMemberBinding="{Binding Path=Step}"
+                                    Header="Step"
+                                    />
+                    <GridViewColumn Width="70"
+                                    DisplayMemberBinding="{Binding Path=AdditionNum}"
+                                    Header="Addition"
+                                    />
+                    <GridViewColumn Width="80"
+                                    DisplayMemberBinding="{Binding Path=TotalSum}"
+                                    Header="Total"
+                                    />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
