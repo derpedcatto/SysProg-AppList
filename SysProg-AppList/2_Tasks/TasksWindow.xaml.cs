@@ -28,7 +28,7 @@ namespace SysProg_AppList._2_Tasks
 
         CancellationTokenSource _cts;
 
-        private void PoolWorker (object? pars)
+        private void PoolWorker(object? pars)
         {
             if (pars is PoolWorkerData data)
             {
@@ -123,7 +123,8 @@ namespace SysProg_AppList._2_Tasks
 
         private void Start3_Click(object sender, RoutedEventArgs e)
         {
-
+            Log2.Text = "Start3 ";
+            Task.Run(Starter3_Good);
         }
 
         private void Stop2_Click(object sender, RoutedEventArgs e)

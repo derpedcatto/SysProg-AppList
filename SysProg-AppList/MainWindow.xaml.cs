@@ -32,6 +32,12 @@ namespace SysProg_AppList
             new TasksWindow().ShowDialog();
         }
 
+        private void ButtonTasksHomework_Click(object sender, RoutedEventArgs e)
+        {
+            new Task2Window().ShowDialog();
+        }
+
+
         private void ButtonProcesses_Click(object sender, RoutedEventArgs e)
         {
             new ProcessesWindow().ShowDialog();

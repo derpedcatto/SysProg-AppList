@@ -68,10 +68,16 @@
                         />
             </DockPanel>
 
-            <Button Click="ButtonTasks_Click"
-                    Content="Tasks, Пул потоков, многозадачность"
-                    Style="{StaticResource MainWindowExampleButton}"
-                    />
+            <DockPanel>
+                <Button Click="ButtonTasks_Click"
+                        Content="Tasks, Пул потоков, многозадачность"
+                        Style="{StaticResource MainWindowExampleButton}"
+                        />
+                <Button Click="ButtonTasksHomework_Click"
+                        Content="Homework"
+                        Style="{StaticResource MainWindowHomeworkButton}"
+                        />
+            </DockPanel>
 
             <Button Click="ButtonProcesses_Click"
                     Content="Процессы / Диспетчер задач"
