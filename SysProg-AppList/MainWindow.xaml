@@ -81,7 +81,7 @@
 
             <Button Click="ButtonProcesses_Click"
                     Content="Процессы / Диспетчер задач"
-                    Style="{StaticResource MainWindowExampleButton}"
+                    Style="{StaticResource MainWindowHomeworkButton}"
                     />
         </StackPanel>
     </StackPanel>

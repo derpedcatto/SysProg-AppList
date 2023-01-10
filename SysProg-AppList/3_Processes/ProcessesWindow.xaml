@@ -54,18 +54,55 @@
                    Content="Потоки процесса"
                    />
             <TextBlock x:Name="ThreadsBlock" />
-            <Button x:Name="NotepadButton"
-                    Click="NotepadButton_Click"
-                    Content="Блокнот"
-                    />
+
+            <!--  Notepad  -->
+            <DockPanel>
+                <Button x:Name="NotepadButton"
+                        Width="350"
+                        Click="NotepadButton_Click"
+                        Content="Блокнот"
+                        Style="{StaticResource MainWindowHomeworkButton}"
+                        />
+                <Button x:Name="NotepadCloseButton"
+                        Width="auto"
+                        Background="Red"
+                        Click="NotepadCloseButton_Click"
+                        Content="X"
+                        FontSize="20"
+                        IsEnabled="False"
+                        />
+            </DockPanel>
+
+            <Separator />
+
+            <!--  Other  -->
             <Button x:Name="ExplorerButton"
                     Click="ExplorerButton_Click"
                     Content="Explorer"
+                    Style="{StaticResource MainWindowExampleButton}"
                     />
             <Button x:Name="ITSTEPButton"
                     Click="ITSTEPButton_Click"
                     Content="IT STEP"
+                    Style="{StaticResource MainWindowExampleButton}"
                     />
+
+            <Separator />
+
+            <!--  URL Field  -->
+            <StackPanel Margin="0,75,0,0">
+                <TextBox x:Name="TextFieldURL"
+                         FontSize="16"
+                         TextChanged="TextFieldURL_TextChanged"
+                         />
+                <Button x:Name="ButtonOpenURL"
+                        Click="ButtonOpenURL_Click"
+                        Content="Open URL"
+                        IsEnabled="False"
+                        Style="{StaticResource MainWindowHomeworkButton}"
+                        />
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>

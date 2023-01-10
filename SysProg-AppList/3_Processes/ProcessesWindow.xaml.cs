@@ -1,6 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +14,7 @@ namespace SysProg_AppList._3_Processes
     {
         #region Variables
 
+        private Process? _notepadInstance;
         public ObservableCollection<Process> Processes { get; set; }
 
         #endregion
@@ -23,14 +25,15 @@ namespace SysProg_AppList._3_Processes
         public ProcessesWindow()
         {
             InitializeComponent();
-            Processes = new();
             this.DataContext = this;
+            Processes = new();
+            _notepadInstance = new();
         }
 
         #endregion
 
 
-        #region Methods
+        #region Methods - Process List
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -64,14 +67,66 @@ namespace SysProg_AppList._3_Processes
             }
         }
 
+        #endregion
+
+
+        #region Methods - Notepad
+
         private void NotepadButton_Click(object sender, RoutedEventArgs e)
         {
-            var notepad = Process.Start("notepad.exe");
-            Task.Run(() =>
+            var openFileDialog = new OpenFileDialog
             {
-                Task.Delay(3000).ContinueWith(t => notepad.Kill());
-            });
+                Filter = "Text files (*.txt)|*.txt"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                _notepadInstance = Process.Start("notepad.exe", openFileDialog.FileName);
+                _notepadInstance.EnableRaisingEvents = true;
+                _notepadInstance.Exited += new EventHandler(KillNotepad);
+
+                NotepadCloseButton.IsEnabled = true;
+                NotepadButton.IsEnabled = false;
+            }
         }
+
+        private void NotepadCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            KillNotepad(sender, e);
+        }
+
+        private void KillNotepad(object sender, EventArgs e)
+        {
+            _notepadInstance!.Kill();
+            Dispatcher.BeginInvoke(() => { NotepadCloseButton.IsEnabled = false; NotepadButton.IsEnabled = true; });
+        }
+
+        #endregion
+
+
+        #region Methods - URL Field
+
+        private void ButtonOpenURL_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", TextFieldURL.Text);
+        }
+
+        private void TextFieldURL_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Uri.IsWellFormedUriString(TextFieldURL.Text, UriKind.Absolute))
+            {
+                ButtonOpenURL.IsEnabled = true;
+            }
+            else
+            {
+                ButtonOpenURL.IsEnabled = false;
+            }
+        }
+
+        #endregion
+
+
+        #region Methods - Other processes
 
         private void ExplorerButton_Click(object sender, RoutedEventArgs e)
         {
